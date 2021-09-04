@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Cadastro
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+ <form>
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">CPF</ion-label>
+    <ion-input type="tel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Data de nascimento</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Senha</ion-label>
+    <ion-input type="passaword" placeholder="Senha"></ion-input>
+    <ion-input type="passaword" placeholder="Confirme a Senha"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block">Salvar</ion-button>
+  <ion-button expand="block" fill="outline">Voltar</ion-button>
+
+ </form>
+
 </ion-content>
