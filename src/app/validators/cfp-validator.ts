@@ -8,6 +8,7 @@ export class CpfValidator {
         // Para verificar o digito do cpf
         let rev = 0;
         let add = 0;
+
         // Verifica tamanho digitado e alguns cpfs que passam na verificação do digito, mas são inválidos
         if (cpfString.length != 11 ||
             cpfString == '00000000000' ||

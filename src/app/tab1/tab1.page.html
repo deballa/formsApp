@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Cadastro
     </ion-title>
@@ -8,36 +8,74 @@
 
 <ion-content [fullscreen]="true">
 
- <form>
+ <form [formGroup]="formCadastro">
   <ion-item>
-    <ion-label position="floating">Nome</ion-label>
-    <ion-input></ion-input>
+    <ion-label position="floating"> <ion-icon name="person" class="ico"></ion-icon> Nome</ion-label>
+    <ion-input formControlName="nome" class="input"></ion-input>
+    <ng-container *ngFor="let erro of mensagens.nome">
+      <span class="msg-erro"
+        *ngIf="formCadastro.get('nome').hasError(erro.tipo) && (formCadastro.get('nome').dirty || formCadastro.get('nome').touched)">
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">E-mail</ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-label position="floating"> <ion-icon name="mail" class="ico"></ion-icon> E-mail</ion-label>
+    <ion-input type="email" formControlName="email" class="input"></ion-input>
+    <ng-container *ngFor="let erro of mensagens.email">
+      <span class="msg-erro"
+        *ngIf="formCadastro.get('email').hasError(erro.tipo) && (formCadastro.get('email').dirty || formCadastro.get('email').touched)">
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">CPF</ion-label>
-    <ion-input type="tel"></ion-input>
+    <ion-label position="floating"> <ion-icon name="browsers" class="ico"></ion-icon> CPF</ion-label>
+    <ion-input type="tel" formControlName="cpf" class="input"></ion-input>
+    <ng-container *ngFor="let erro of mensagens.cpf">
+      <span class="msg-erro"
+        *ngIf="formCadastro.get('cpf').hasError(erro.tipo) && (formCadastro.get('cpf').dirty || formCadastro.get('cpf').touched)">
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Data de nascimento</ion-label>
-    <ion-datetime cancelText="Cancelar" doneText="Selecionar" displayFormat="DD/MM/YYYY" placeholder="Selecione"></ion-datetime>
+    <ion-label position="floating" class="label"> <ion-icon name="calendar" class="ico"></ion-icon> Data de nascimento</ion-label>
+    <ion-datetime formControlName="dataNascimento" cancelText="Cancelar" doneText="Selecionar" class="input" displayFormat="DD/MM/YYYY" placeholder="Selecione"></ion-datetime>
+    <ng-container *ngFor="let erro of mensagens.dataNascimento">
+      <span class="msg-erro"
+        *ngIf="formCadastro.get('dataNascimento').hasError(erro.tipo) && (formCadastro.get('dataNascimento').dirty || formCadastro.get('dataNascimento').touched)">
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Senha</ion-label>
-    <ion-input type="password" placeholder="Senha"></ion-input>
-    <ion-input type="password" placeholder="Confirme a Senha"></ion-input>
+    <ion-label position="stacked" class="label"> <ion-icon name="key" class="ico"></ion-icon> Senha</ion-label>
+    <ion-input formControlName="senha" type="password" placeholder="Senha" class="input"></ion-input>
+    <ion-input formControlName="confirmaSenha" type="password" placeholder="Confirme a Senha" class="input"></ion-input>
+
+    <ng-container *ngFor="let erro of mensagens.senha">
+      <span class="msg-erro"
+        *ngIf="formCadastro.get('senha').hasError(erro.tipo) && (formCadastro.get('senha').dirty || formCadastro.get('senha').touched)">
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
+
+    <ng-container *ngFor="let erro of mensagens.confirmaSenha">
+      <span class="msg-erro"
+        *ngIf="formCadastro.get('confirmaSenha').hasError(erro.tipo) && (formCadastro.get('confirmaSenha').dirty || formCadastro.get('confirmaSenha').touched)">
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
+    <br />
   </ion-item>
 
-  <ion-button expand="block">Salvar</ion-button>
-  <ion-button expand="block" fill="outline">Voltar</ion-button>
-
+  <ion-button class="mg-b" expand="block" (click)="salvarCadastro()">Salvar</ion-button>
+  <ion-button class="mg-b" expand="block" fill="outline">Voltar</ion-button>
  </form>
 
 </ion-content>
