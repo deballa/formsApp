@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Usuários </ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-title> Lista de Usuários </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
     </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option color="danger" (click)="removerUsuario(user.email)">
+      <ion-item-option color="danger" (click)="exibirMensagem(user.email)">
         <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
       </ion-item-option>
     </ion-item-options>
